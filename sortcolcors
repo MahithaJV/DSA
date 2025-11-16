@@ -1,0 +1,18 @@
+def longest_unique_substring(s):
+start = 0
+max_length = 0
+seen = {}
+
+for end in range(len(s)):
+if s[end] in seen and seen[s[end]] >= start:
+start = seen[s[end]] + 1
+seen[s[end]] = end
+max_length = max(max_length, end - start + 1)
+
+print(f"Window: {s[start:end+1]} Max length so far:
+{max_length}")
+return max_length
+
+s = "abcabcbb"
+print("\nLength of longest substring without repeating characters:",
+longest_unique_substring(s))
